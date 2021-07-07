@@ -68,8 +68,8 @@ namespace Samples
                 Rulesets = new List<Ruleset>{
                     new Ruleset{Id=1,RuleGroupId=1,Name="Discount10",SuccessEvent="10",Priority=5},
                     new Ruleset{Id=2,RuleGroupId=1,Name="Discount20",SuccessEvent="20",Priority=10},
-                    new Ruleset{Id=3,RuleGroupId=2,Name="Cashback25",SuccessEvent="10",Priority=5},
-                    new Ruleset{Id=4,RuleGroupId=2,Name="Cashback50",SuccessEvent="20",Priority=10}
+                    new Ruleset{Id=3,RuleGroupId=2,Name="Cashback25",SuccessEvent="25",Priority=5},
+                    new Ruleset{Id=4,RuleGroupId=2,Name="Cashback50",SuccessEvent="50",Priority=10}
                 },
                 Rules = new List<Rule>{
                     new Rule{Id=1,RulesetId=1,Parameter="country",RelationalOperator="in",Value="India,Srilanka",LogicalOperator="AND"},
@@ -84,7 +84,7 @@ namespace Samples
                     new Rule{Id=8,RulesetId=3,Parameter="name",RelationalOperator="starts",Value="A",LogicalOperator="AND"},
                     new Rule{Id=9,RulesetId=3,Parameter="totalPurchases",RelationalOperator=">",Value="1500",LogicalOperator=""},
 
-                    new Rule{Id=10,RulesetId=4,Parameter="country",RelationalOperator="notin",Value="India,Srilanka",LogicalOperator="AND"},
+                    new Rule{Id=10,RulesetId=4,Parameter="country",RelationalOperator="in",Value="India,Srilanka",LogicalOperator="AND"},
                     new Rule{Id=11,RulesetId=4,Parameter="name",RelationalOperator="%",Value="run",LogicalOperator="AND"},
                     new Rule{Id=12,RulesetId=4,Parameter="totalPurchases",RelationalOperator=">",Value="1500",LogicalOperator=""}
                 }

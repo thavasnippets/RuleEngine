@@ -37,10 +37,10 @@ namespace RuleEngine
                                                                       });
 
                 var converter = new ExpandoObjectConverter();
-                dynamic input = JsonConvert.DeserializeObject<ExpandoObject>(data.ToLower(), converter);
+                dynamic input1 = JsonConvert.DeserializeObject<ExpandoObject>(data.ToLower(), converter);
                 var inputs = new dynamic[]
                     {
-                    input
+                    input1
                     };
 
                 List<RuleResultTree> resultList = rule.ExecuteAllRulesAsync(workflowName, inputs).Result;
@@ -126,27 +126,27 @@ namespace RuleEngine
             switch (RelationalOperator.ToLower())
             {
                 case "=":
-                    return ruleEngineOperator + ".Equals(input." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
+                    return ruleEngineOperator + ".EqualCheck(input1." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
                 case "<>":
-                    return ruleEngineOperator + ".NotEquals(input." + Parameter.ToLower() + " ,\"" + Value.ToLower() + "\") " + LogicalOperator;
+                    return ruleEngineOperator + ".NotEqualCheck(input1." + Parameter.ToLower() + " ,\"" + Value.ToLower() + "\") " + LogicalOperator;
                 case ">":
-                    return ruleEngineOperator + ".GreaterThen(input." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
+                    return ruleEngineOperator + ".GreaterThenCheck(input1." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
                 case "<":
-                    return ruleEngineOperator + ".LessThen(input." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
+                    return ruleEngineOperator + ".LessThenCheck(input1." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
                 case "%":
-                    return ruleEngineOperator + ".Like(input." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
+                    return ruleEngineOperator + ".LikeCheck(input1." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
                 case "!%":
-                    return ruleEngineOperator + ".NotLike(input." + Parameter.ToLower() + " ,\"" + Value.ToLower() + "\") " + LogicalOperator;
+                    return ruleEngineOperator + ".NotLikeCheck(input1." + Parameter.ToLower() + " ,\"" + Value.ToLower() + "\") " + LogicalOperator;
                 case "in":
-                    return ruleEngineOperator + ".Contain(input." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
+                    return ruleEngineOperator + ".ContainCheck(input1." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
                 case "notin":
-                    return ruleEngineOperator + ".NotContain(input." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
+                    return ruleEngineOperator + ".NotContainCheck(input1." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
                 case "starts":
-                    return ruleEngineOperator + ".StartsWith(input." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
+                    return ruleEngineOperator + ".StartsWithCheck(input1." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
                 case "ends":
-                    return ruleEngineOperator + ".EndsWith(input." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
+                    return ruleEngineOperator + ".EndsWithCheck(input1." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
                 case "regex":
-                    return ruleEngineOperator + ".RegularExpression(input." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
+                    return ruleEngineOperator + ".RegularExpressionCheck(input1." + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
                 default:
                     return string.Concat(Parameter, " ", RelationalOperator, " ", Value, " ", LogicalOperator);
             }
