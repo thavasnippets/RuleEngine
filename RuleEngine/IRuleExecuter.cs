@@ -4,11 +4,10 @@ namespace RuleEngine
     using RuleEngine.Model;
     public interface IRuleExecuter
     {
-        RuleViewModal RulesCollection { get; set; }
         string ExecuteRules(string workflowName,
-                            string data,
-                            out bool IsSuccess,
-                            ILogger logger = null);
+                     string data,
+                     out bool IsSuccess,
+                     ILogger logger = null);
 
 
     }

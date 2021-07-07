@@ -1,0 +1,17 @@
+
+.vscode/launch.json
+*.json
+RuleEngine/obj/Debug/net5.0/RuleEngine.AssemblyInfo.cs
+RuleEngine/obj/Debug/net5.0/RuleEngine.AssemblyInfoInputs.cache
+RuleEngine/obj/Debug/net5.0/RuleEngine.GeneratedMSBuildEditorConfig.editorconfig
+Samples/obj/Debug/net5.0/.NETCoreApp,Version=v5.0.AssemblyAttributes.cs
+Samples/obj/Debug/net5.0/apphost.exe
+Samples/obj/Debug/net5.0/Samples.AssemblyInfo.cs
+Samples/obj/Debug/net5.0/Samples.AssemblyInfoInputs.cache
+Samples/obj/Debug/net5.0/Samples.assets.cache
+Samples/obj/Debug/net5.0/Samples.csproj.AssemblyReference.cache
+Samples/obj/Debug/net5.0/Samples.csproj.FileListAbsolute.txt
+Samples/obj/Debug/net5.0/Samples.GeneratedMSBuildEditorConfig.editorconfig
+Samples/obj/project.nuget.cache
+Samples/obj/Samples.csproj.nuget.g.props
+Samples/obj/Samples.csproj.nuget.g.targets
