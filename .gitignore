@@ -1,7 +1,5 @@
 
-.vscode/launch.json
-*.json
-
+.vscode/
 RuleEngine/obj/
 RuleEngine/bin/
 Samples/obj/

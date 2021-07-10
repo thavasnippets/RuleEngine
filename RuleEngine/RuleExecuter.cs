@@ -91,7 +91,7 @@ namespace RuleEngine
                                                                          t.rl.LogicalOperator)
 
                                                          }))
-                                                         .GroupBy(t => new { t.RuleGroupName, t.RuleSetName, t.SuccessEvent, t.ErrorMessage, t.ErrorType })
+                                                         .GroupBy(t => new { t.RuleGroupName, t.RuleSetName, t.SuccessEvent, t.ErrorMessage, t.ErrorType, t.Priority })
                                                          .Select(x => new
                                                          {
                                                              RuleGroupName = x.Key.RuleGroupName,
@@ -99,8 +99,9 @@ namespace RuleEngine
                                                              SuccessEvent = x.Key.SuccessEvent,
                                                              ErrorMessage = x.Key.ErrorMessage,
                                                              ErrorType = x.Key.ErrorType,
+                                                             Priority = x.Key.Priority,
                                                              Expression = string.Join(" ", x.Select(m => m.Expression))
-                                                         }).ToList())
+                                                         }).OrderBy(m => m.RuleGroupName).ThenBy(m => m.Priority).ToList())
                                                          .GroupBy(t => t.RuleGroupName)
                                                          .Select(t => new
                                                          {
@@ -125,6 +126,10 @@ namespace RuleEngine
 
             switch (RelationalOperator.ToLower())
             {
+                case "(":
+                    return "(";
+                case ")":
+                    return ") " + LogicalOperator;
                 case "=":
                     return ruleEngineOperator + ".EqualCheck(" + Parameter.ToLower() + " , \"" + Value.ToLower() + "\") " + LogicalOperator;
                 case "<>":

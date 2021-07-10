@@ -50,7 +50,7 @@ namespace RuleEngine.Helper
 
             var lCheck = check.ToString().Split(',').ToList().Select(t => t.Trim());
             var lCheckAgainst = checkAgainst.ToString().Split(',').ToList().Select(t => t.Trim());
-            return lCheck.Select(t => lCheckAgainst.Contains(t)).Any();
+            return lCheck.Select(t => lCheckAgainst.Contains(t)).ToList()[0];
         }
         public static bool NotContainCheck(string check, string checkAgainst)
         {
